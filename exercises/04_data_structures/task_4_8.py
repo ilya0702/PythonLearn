@@ -1,3 +1,4 @@
+
 # -*- coding: utf-8 -*-
 """
 Задание 4.8
@@ -20,3 +21,6 @@
 """
 
 ip = "192.168.3.1"
+octlist = ip.split('.')
+print('{:8}{:8}{:8}{:8}'.format(*octlist))
+print('{0:8b}{0:8b}{0:8b}{0:8b}'.format(int(octlist[0]), int(octlist[1]), int(octlist[2]), int(octlist[3])))
