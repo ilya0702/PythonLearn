@@ -13,4 +13,15 @@
 
 """
 
+from sys import argv
+
+file = argv[1]
 ignore = ["duplex", "alias", "Current configuration"]
+with open(file, 'r') as f, open('config_sw1_cleared.txt', 'w+') as f1:
+	for line in f:
+		line = line.lstrip()
+		if line.startswith(ignore[0]) or line.startswith(ignore[1]) or line.startswith(ignore[2]) or line.startswith('!'):
+			continue
+		else:
+			f1.write(line)
+
