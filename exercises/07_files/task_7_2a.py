@@ -12,4 +12,15 @@
 
 """
 
+
+from sys import argv
+
+file = argv[1]
 ignore = ["duplex", "alias", "Current configuration"]
+with open(file, 'r') as f:
+	for line in f:
+		for skip in ignore:
+			if line.startswith('!') or skip in line:
+				break
+		else:
+			print(line.strip())
