@@ -33,11 +33,11 @@ def generate_access_config(intf_vlan_mapping, access_template, psecurity = None)
                 result.append(comm)
             else:
                 result.append(comm)
-            if psecurity:
-                for coms in psecurity:
-                    result.append(coms)
+        if psecurity:
+            for coms in psecurity:
+                result.append(coms)
     return result
 
-res = generate_access_config(access_config, access_mode_template)
+res = generate_access_config(access_config, access_mode_template, port_security_template)
 print(res)
 
