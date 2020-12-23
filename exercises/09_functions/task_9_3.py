@@ -35,7 +35,7 @@ def get_int_vlan_map(config_filename):
 				access_dict[int] = vlan
 			elif line.startswith('switchport trunk allowed'):
 				vlans = line.split()[-1].split(',')
-				trunk_dict[int] = [int(v) for v in vlans]
+				trunk_dict[int] = [v for v in vlans]
 		result_tuple = (access_dict, trunk_dict)
 		return result_tuple
 
