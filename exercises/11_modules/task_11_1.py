@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+
 """
 Задание 11.1
 
@@ -38,6 +39,21 @@ def parse_cdp_neighbors(command_output):
     работать и с файлами и с выводом с оборудования.
     Плюс учимся работать с таким выводом.
     """
+    res = {}
+    for line in command_output.split("\n"):
+        string = line.strip()
+        colm = string.split()
+        if '>' in string:
+            hostname = string.split('>')[0]
+        try:
+            if colm[3].isdigit():
+                linf = ''.join(colm[1:3])
+                rinf = ''.join(colm[-2:])
+                rdev = colm[0]
+                res[(hostname, linf)] = (rdev, rinf)
+        except IndexError:
+            continue 
+    return res
 
 
 if __name__ == "__main__":

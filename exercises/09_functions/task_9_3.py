@@ -21,6 +21,7 @@
 
 Ограничение: Все задания надо выполнять используя только пройденные темы.
 """
+from pprint import  pprint
 
 def get_int_vlan_map(config_filename):
 	with open(config_filename) as f:
@@ -39,4 +40,4 @@ def get_int_vlan_map(config_filename):
 		result_tuple = (access_dict, trunk_dict)
 		return result_tuple
 
-print(get_int_vlan_map('config_sw1.txt'))
+pprint(get_int_vlan_map('config_sw1.txt'))
