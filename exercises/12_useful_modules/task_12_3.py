@@ -23,3 +23,14 @@ Reachable    Unreachable
 
 Для этого задания нет тестов
 """
+
+from tabulate import tabulate
+
+
+def print_ip_table(avlist, navlist):
+	res = {'Reachable': avlist, 'Unreachable': navlist}
+	return print(tabulate(res, headers="keys"))
+
+avlist = ['10.1.1.1', '10.1.1.2']
+navlist = ['10.1.1.7', '10.1.1.8', '10.1.1.9']
+print(print_ip_table(avlist, navlist))
