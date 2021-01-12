@@ -41,6 +41,8 @@ Cгенерировать топологию, которая соответст�
 > pip install graphviz
 
 """
+from pprint import pprint
+from task_11_1 import parse_cdp_neighbors
 
 # эти заготовки написаны чтобы показать в какой момент должна
 # рисоваться топология (после вызова функции)
@@ -55,7 +57,14 @@ if __name__ == "__main__":
         "sh_cdp_n_r2.txt",
         "sh_cdp_n_r3.txt",
     ]
-
-    topology = create_network_map(infiles)
+    resdict = {}
+    for files in infiles:
+        with open(files) as f:
+            res = parse_cdp_neighbors(f.read())
+            for key, value in res.items():
+                if resdict[key] not in resdict.items():
+                    resdict[key] = value
+    pprint(resdict)
+    #topology = create_network_map(infiles)
     # рисуем топологию:
     # draw_topology(topology)
