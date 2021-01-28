@@ -1,3 +1,4 @@
+
 # -*- coding: utf-8 -*-
 """
 Задание 15.1
@@ -22,3 +23,22 @@
 диапазоны адресов и так далее, так как обрабатывается вывод команды, а не ввод пользователя.
 
 """
+
+import re
+
+
+def get_ip_from_cfg(filename):
+	regexp = 'address (\S+) (\S+)'
+	reslist = []
+	with open(filename) as f:
+		for line in f: 
+			match = re.search(regexp, line) 
+			if match:
+				restuple = match.groups()
+				reslist.append(restuple)
+	return reslist
+
+
+print(get_ip_from_cfg('config_r1.txt'))
+
+
